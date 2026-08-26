@@ -975,13 +975,6 @@ local function formatNumber(number)
     end
 end
 
-local statsLabel = FarmingTab:AddLabel("Stats:")
-statsLabel.TextSize = 25
-local strengthLabel = FarmingTab:AddLabel("Strength: 0 | Gained: 0")
-strengthLabel.TextSize = 15
-local durabilityLabel = FarmingTab:AddLabel("Durability: 0 | Gained: 0")
-durabilityLabel.TextSize = 15
-
 local startTime = 0
 local pausedElapsedTime = 0
 local lastPauseTime = 0
@@ -1392,7 +1385,7 @@ end)
 
 local auto1234Farm = false
 
-FastRebTab:AddSwitch("Auto farm Squat", function(state)
+FarmingTab:AddSwitch("Auto farm Squat", function(state)
     auto1234Farm = state
 
     if state then
