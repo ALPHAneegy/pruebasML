@@ -907,7 +907,7 @@ FastRebTab:AddSwitch("Auto farm lift", function(state)
 
     if state then
         task.spawn(function()
-            while autoFarm do
+            while auto12Farm do
                 Event:FireServer(
                     "rep",
                     workspace.machinesFolder["Industrial Bar Lift"].interactSeat
