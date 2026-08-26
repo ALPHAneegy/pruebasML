@@ -1392,7 +1392,7 @@ end)
 
 -local auto1234Farm = false
 
-FastRebTab:AddSwitch("Auto farm bench", function(state)
+FastRebTab:AddSwitch("Auto farm Squat", function(state)
     auto1234Farm = state
 
     if state then
