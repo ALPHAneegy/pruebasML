@@ -898,19 +898,28 @@ FastRebTab:AddButton("Industrial Lift",function()
     VirtualInputManager:SendKeyEvent(true, Enum.KeyCode.E, false, game)
     task.wait(0.05)
     VirtualInputManager:SendKeyEvent(false, Enum.KeyCode.E, false, game)
-
-    task.Wait(0.2)
-
-    while true do
-    Event:FireServer(
-        "rep",
-        workspace.machinesFolder["Industrial Bar Lift"].interactSeat
-    )
-
-    task.wait(0.01)
-    end
 end)
 
+local Event = game:GetService("Players").LocalPlayer:WaitForChild("muscleEvent")
+
+local auto12Farm = false
+
+FastRebTab:AddSwitch("Auto farm lift", function(state)
+    auto12Farm = state
+
+    if state then
+        task.spawn(function()
+            while auto12Farm do
+                Event:FireServer(
+                    "rep",
+                    workspace.machinesFolder["Industrial Bar Lift"].interactSeat
+                )
+
+                task.wait(0.01)
+            end
+        end)
+    end
+end)
 
 FastRebTab:AddButton("Industrial Bench",function()
     local player = game.Players.LocalPlayer
