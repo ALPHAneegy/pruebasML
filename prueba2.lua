@@ -900,14 +900,22 @@ FastRebTab:AddButton("Industrial Lift",function()
     VirtualInputManager:SendKeyEvent(false, Enum.KeyCode.E, false, game)
 end)
 
-FastRebTab:AddSwitch("Auto farm lift", function(state)
-    while true do
-    Event:FireServer(
-        "rep",
-        workspace.machinesFolder["Industrial Bar Lift"].interactSeat
-    )
+local auto12Farm = false
 
-    task.wait(0.01)
+FastRebTab:AddSwitch("Auto farm lift", function(state)
+    auto12Farm = state
+
+    if state then
+        task.spawn(function()
+            while autoFarm do
+                Event:FireServer(
+                    "rep",
+                    workspace.machinesFolder["Industrial Bar Lift"].interactSeat
+                )
+
+                task.wait(0.01)
+            end
+        end)
     end
 end)
 
