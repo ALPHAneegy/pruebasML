@@ -1390,14 +1390,14 @@ FarmingTab:AddButton("Industrial Squat",function()
     VirtualInputManager:SendKeyEvent(false, Enum.KeyCode.E, false, game)
 end)
 
--local auto1234Farm = false
+local auto1234Farm = false
 
 FastRebTab:AddSwitch("Auto farm Squat", function(state)
     auto1234Farm = state
 
     if state then
         task.spawn(function()
-            while auto123Farm do
+            while auto1234Farm do
                 Event:FireServer(
                     "rep",
                     workspace.machinesFolder["Industrial Squat"].interactSeat
