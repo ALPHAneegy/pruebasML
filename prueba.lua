@@ -3,7 +3,7 @@ local LocalPlayer = Players.LocalPlayer
 
 local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/ALPHAneegy/library-script/refs/heads/main/README4.md", true))() 
 
-local window = library:AddWindow("V.Roy Farming | New UPD", {
+local window = library:AddWindow("V Roy Farming | New UPD", {
     main_color = Color3.fromRGB(0, 0, 0),
     min_size = Vector2.new(600, 600),
     can_resize = false
@@ -932,7 +932,24 @@ FastRebTab:AddButton("Industrial Bench",function()
     VirtualInputManager:SendKeyEvent(false, Enum.KeyCode.E, false, game)
 end)
 
+local auto123Farm = false
 
+FastRebTab:AddSwitch("Auto farm bench", function(state)
+    auto12Farm = state
+
+    if state then
+        task.spawn(function()
+            while auto123Farm do
+                Event:FireServer(
+                    "rep",
+                    workspace.machinesFolder["Industrial Bench"].interactSeat
+                )
+
+                task.wait(0.01)
+            end
+        end)
+    end
+end)
 
 
 local FarmingTab = window:AddTab("Fast Farm")
