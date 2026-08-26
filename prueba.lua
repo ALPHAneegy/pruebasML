@@ -935,7 +935,7 @@ end)
 local auto123Farm = false
 
 FastRebTab:AddSwitch("Auto farm bench", function(state)
-    auto12Farm = state
+    auto123Farm = state
 
     if state then
         task.spawn(function()
@@ -1297,16 +1297,7 @@ local spinwheelSwitch = FarmingTab:AddSwitch("Spin Fortune Wheel", function(bool
     end
 end)
 
-FarmingTab:AddButton("Industrial Squat",function()
-    local player = game.Players.LocalPlayer
-    local char = player.Character or Player.CharacterAdded:wait()
-    local hrp = char:WaitForChild("HumanoidRootPart")
-    hrp.CFrame = CFrame.new(-5208.15625, 64.15147399902344, 5426.25830078125)
-    task.wait(0.2)
-    VirtualInputManager:SendKeyEvent(true, Enum.KeyCode.E, false, game)
-    task.wait(0.05)
-    VirtualInputManager:SendKeyEvent(false, Enum.KeyCode.E, false, game)
-end)
+FarmingTab:AddLabel("Stuff")
 
 FarmingTab:AddButton("Anti Lag", function()
     local player = game.Players.LocalPlayer
@@ -1384,6 +1375,38 @@ end)
 FarmingTab:AddButton("Equip Swift Samurai", function()
     unequipPets()
     equipPetsByName("Swift Samurai")
+end)
+
+FarmingTab:AddLabel("Auto Industrial Machine")
+
+FarmingTab:AddButton("Industrial Squat",function()
+    local player = game.Players.LocalPlayer
+    local char = player.Character or Player.CharacterAdded:wait()
+    local hrp = char:WaitForChild("HumanoidRootPart")
+    hrp.CFrame = CFrame.new(-5208.15625, 64.15147399902344, 5426.25830078125)
+    task.wait(0.2)
+    VirtualInputManager:SendKeyEvent(true, Enum.KeyCode.E, false, game)
+    task.wait(0.05)
+    VirtualInputManager:SendKeyEvent(false, Enum.KeyCode.E, false, game)
+end)
+
+-local auto1234Farm = false
+
+FastRebTab:AddSwitch("Auto farm bench", function(state)
+    auto1234Farm = state
+
+    if state then
+        task.spawn(function()
+            while auto123Farm do
+                Event:FireServer(
+                    "rep",
+                    workspace.machinesFolder["Industrial Squat"].interactSeat
+                )
+
+                task.wait(0.01)
+            end
+        end)
+    end
 end)
 
 local GlitchingTab = window:AddTab("Rock Farming")
